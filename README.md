@@ -2,14 +2,18 @@
 
 ### First update 
 
-```git pull origin master```
+```
+git pull origin master
+```
 
 **NOTE:** might need to call `git pull github master` and `git pull pantheon master` seperately.
 
 
 ### Checkout new branch
 
-```git checkout -b updating-flight```
+```
+git checkout -b updating-flight
+```
 
 
 ### Pull down latest flight
