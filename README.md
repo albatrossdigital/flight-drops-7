@@ -4,11 +4,11 @@
 
 `git pull origin master`
 
-#### might need to call
+**might need to call**
 `git pull github master`
-#### and
+**and**
 `git pull pantheon master`
-#### seperately
+**seperately**
 
 
 ### Checkout new branch
