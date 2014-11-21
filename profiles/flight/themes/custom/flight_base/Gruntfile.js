@@ -54,7 +54,7 @@ module.exports = function (grunt) {
             src: [
               '**'
             ],
-            dest: '<%= themeName %>/<%= syntax %>/'
+            dest: '<%= themeName %>/sass/'
           },
         ]
       }
@@ -79,24 +79,32 @@ module.exports = function (grunt) {
         src: ['<%= themeName %>/config.rb'],
         overwrite: true,
         replacements: [{
-          from: /\"sass\"/i,
-          to: '\"scss\"'
+          from: /\"scss\"/i,
+          to: '\"sass\"'
+        }]
+      },
+      sassgrunt: {
+        src: ['<%= themeName %>/Gruntfile.js'],
+        overwrite: true,
+        replacements: [{
+          from: /theme_scss\:\ \'scss/i,
+          to: "theme_scss: 'sass",
         }]
       }
     },
     "sass-convert": {
       options: {
-        to: "scss",
-        from: "sass"
+        to: "sass",
+        from: "scss"
       },
       files: {
-        src: ['<%= themeName %>/scss/**/*.sass'],
+        src: ['<%= themeName %>/sass/**/*.scss'],
         dest: '.'
       }
     },
     clean: {
       scss: {
-        src: ["<%= themeName %>/scss/**/*.sass", '<%= themeName %>/sass']
+        src: ["<%= themeName %>/sass/**/*.scss"]
       }
     }
   });
@@ -112,8 +120,8 @@ module.exports = function (grunt) {
       grunt.log.error(this.name + " cannot run without a theme name, use the form \"grunt subtheme:THEMENAME:SYNTAX\"");
     }
     else if (arguments.length === 1) {
-      grunt.log.writeln(this.name + " running with theme name " + themeName + ", and sass syntax since nothing was specified");
-      syntax = 'sass';
+      grunt.log.writeln(this.name + " running with theme name " + themeName + ", and scss syntax since nothing was specified");
+      syntax = 'scss';
     }
     else if (arguments.length === 2) {
       if (syntax == "sass" || syntax == "scss") {
@@ -130,10 +138,11 @@ module.exports = function (grunt) {
       grunt.task.run('copy:main');
       grunt.task.run('copy:sass');
       grunt.task.run('replace:theme');
-      if(syntax == "scss") {
+      if(syntax == "sass") {
         grunt.task.run('sass-convert');
         grunt.task.run('clean:scss');
         grunt.task.run('replace:sass');
+        grunt.task.run('replace:sassgrunt');
       }
     }
   });

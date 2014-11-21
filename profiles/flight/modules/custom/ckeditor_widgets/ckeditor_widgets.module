@@ -68,6 +68,10 @@ function ckeditor_widgets_ckeditor_plugin() {
           'icon' => 'icons/widgetfoundationThreeCol.png',
           'label' => 'Insert three column box',
         ),
+        'widgetfoundationAlert' => array(
+          'icon' => 'icons/widgetfoundationAlert.png',
+          'label' => 'Insert alert box',
+        ),
         'widgetfoundationAccordion' => array(
           'icon' => 'icons/widgetfoundationAccordion.png',
           'label' => 'Insert accordion box',

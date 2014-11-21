@@ -1,8 +1,17 @@
+// Init default alert classes
+
+CKEDITOR.config.widgetfoundationAlert_alertTypes = {
+    'alert': 'Alert',
+    'info': 'Info',
+    'warning': 'Warning',
+    'success': 'Success'
+};
+
 
 CKEDITOR.plugins.add( 'widgetfoundation', {
     requires: 'widget',
 
-    icons: 'widgetfoundationLeftCol,widgetfoundationRightCol,widgetfoundationTwoCol,widgetfoundationThreeCol,widgetfoundationThreeCol,widgetfoundationAccordion',
+    icons: 'widgetfoundationLeftCol,widgetfoundationRightCol,widgetfoundationTwoCol,widgetfoundationThreeCol,widgetfoundationThreeCol,widgetfoundationAccordion,widgetfoundationAlert',
 
     defaults : {
         name: 'accordion',
@@ -16,11 +25,12 @@ CKEDITOR.plugins.add( 'widgetfoundation', {
         // Configurable settings
         var allowedFull = editor.config.widgetFoundation_allowedFull != undefined ? editor.config.widgetFoundation_allowedFull :
             'div(!row,two-col-left,two-col-right,accordion,two-col,three-col){width};' +
-            'div(!columns,small-12,medium-3,medium-9,col-sidebar,col-main,col-1,col-2,col-3)';
+            'div(!columns,small-12,medium-3,medium-9,col-sidebar,col-main,col-1,col-2,col-3)'
+            'div(!alert-box,success,alert,warning,info,secondary,alert-text)';
         var allowedWidget = editor.config.widgetFoundation_allowedWidget != undefined ? editor.config.widgetFoundation_allowedFull :
-            'p br ul ol li strong em img[!src,alt,width,height]';
+            'p span br ul ol li strong em img[!src,alt,width,height]';
         var allowedText = editor.config.widgetFoundation_allowedText != undefined ? editor.config.widgetFoundation_allowedFull :
-            'p br ul ol li strong em';
+            'p span br ul ol li strong em';
 
 
         //allowedWidget = 'img[!src,alt,width,height]';
@@ -149,6 +159,84 @@ CKEDITOR.plugins.add( 'widgetfoundation', {
             }
 
         } );
+
+        editor.addCommand( 'openWidgetfoundationAlert', new CKEDITOR.dialogCommand( 'widgetfoundationAlert' ) );
+        
+        // Add foundation alert button
+        // Textare decodes html entities
+        //var textarea = new CKEDITOR.dom.element( 'textarea' );
+
+        editor.widgets.add( 'widgetfoundationAlert', {
+
+            button: showButtons ? 'Add alert box' : undefined,
+            dialog: 'widgetfoundationAlert',
+
+            template: '<div class="alert-box"><div class="alert-text">Some Text</span></div>',
+
+            editables: {
+                alertBox: {
+                    selector: '.alert-text',
+                    allowedContent: allowedWidget
+                },
+            },
+
+            allowedContent: allowedFull,
+
+            data: function() {
+                var newData = this.data,
+                    oldData = this.oldData;
+
+                /*if( newData.alertText ) {
+                    this.element.getChild( 0 ).setHtml( CKEDITOR.tools.htmlEncode( newData.alertText ) );
+                }*/
+                
+                if ( oldData && newData.type != oldData.type )
+                    this.element.removeClass(oldData.type);
+
+                if ( newData.type )
+                    this.element.addClass(newData.type);
+
+                // Save oldData.
+                this.oldData = CKEDITOR.tools.copy( newData );
+            },
+
+            upcast: function( el, data ) {
+                if (el.name != 'div' || !el.hasClass( 'alert-box' ))
+                    return;
+
+                var childrenArray = el.children,
+                    alertText;
+
+                if ( childrenArray.length !== 1 || !( alertText = childrenArray[ 0 ] ).hasClass('alert-text'))
+                    return;
+
+                // Acceptable alert types
+                var alertTypes = CKEDITOR.config.widgetfoundationAlert_alertTypes;
+                // Check alert types
+                for(var i = 0; i < el.classes.length; i++) {
+                    if(el.classes[i] != 'alert-box') {
+                        for ( alertName in alertTypes ) {
+                            if(el.classes[i] == alertName) {
+                                data.type = alertName;
+                            }
+                        }
+                    }
+                }
+
+                // Use textarea to decode HTML entities (#11926).
+                //textarea.setHtml( alertText.getHtml() );
+                //data.alertText = textarea.getValue();
+
+                return el;
+            },
+
+            downcast: function( el ) {
+                return el;
+            }
+
+        } );
+        // Alert dialog
+        CKEDITOR.dialog.add( 'widgetfoundationAlert', this.path + 'dialogs/widgetfoundationAlert.js' );
 
         CKEDITOR.dialog.add( 'widgetfoundationAccordion', this.path + 'dialogs/widgetfoundationAccordion.js' );
         editor.widgets.add( 'widgetfoundationAccordion', {

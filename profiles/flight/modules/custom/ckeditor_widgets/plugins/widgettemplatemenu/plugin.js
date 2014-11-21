@@ -22,6 +22,7 @@ CKEDITOR.plugins.add( 'widgettemplatemenu', {
             buttonData.widgetfoundationRightCol = 'Insert right column template';
             buttonData.widgetfoundationTwoCol = 'Insert two column template';
             buttonData.widgetfoundationThreeCol = 'Insert three column template';
+            buttonData.widgetfoundationAlert = 'Insert Alert box';
             buttonData.widgetfoundationAccordion = 'Insert accordion box';
         //}
         //if (editor.commands.oembed != undefined) {
@@ -77,6 +78,7 @@ CKEDITOR.plugins.add( 'widgettemplatemenu', {
                     widgetfoundationRightCol: editor.commands.widgetfoundationRightCol == undefined ? false : editor.commands.widgetfoundationRightCol.state,
                     widgetfoundationTwoCol: editor.commands.widgetfoundationTwoCol == undefined ? false : editor.commands.widgetfoundationTwoCol.state,
                     widgetfoundationThreeCol: editor.commands.widgetfoundationThreeCol == undefined ? false : editor.commands.widgetfoundationThreeCol.state,
+                    widgetfoundationAlert: editor.commands.widgetfoundationAlert == undefined ? false : editor.commands.widgetfoundationAlert.state,
                     widgetfoundationAccordion: editor.commands.widgetfoundationAccordion == undefined ? false : editor.commands.widgetfoundationAccordion.state,
                     oembed: editor.commands.oembed == undefined ? false : editor.commands.oembed.state,
                     codeSnippet: editor.commands.codeSnippet == undefined ? false : editor.commands.codeSnippet.state,

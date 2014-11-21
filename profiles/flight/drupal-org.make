@@ -39,7 +39,7 @@ projects[menu_trail_by_path][subdir] = "contrib"
 projects[devel][version] = "1.5"
 projects[devel][subdir] = "devel"
 
-projects[ds][version] = "2.6"
+projects[ds][version] = "2.7"
 projects[ds][subdir] = "contrib"
 
 projects[features][version] = "2.2"
@@ -51,7 +51,7 @@ projects[email][subdir] = "contrib"
 projects[field_group][version] = "1.4"
 projects[field_group][subdir] = "contrib"
 
-projects[link][version] = "1.2"
+projects[link][version] = "1.3"
 projects[link][subdir] = "contrib"
 
 projects[select_or_other][version] = "2.20"
@@ -84,7 +84,7 @@ projects[strongarm][subdir] = "contrib"
 projects[token][version] = "1.5"
 projects[token][subdir] = "contrib"
 
-projects[metatag][version] = "1.2"
+projects[metatag][version] = "1.4"
 projects[metatag][subdir] = "contrib"
 
 projects[page_title][version] = "2.7"
@@ -117,7 +117,7 @@ projects[media_inkfilepicker][subdir] = "contrib"
 projects[addressfield][version] = "1.0-beta5"
 projects[addressfield][subdir] = "contrib"
 
-projects[geofield][version] = "2.1"
+projects[geofield][version] = "2.3"
 projects[geofield][subdir] = "contrib"
 
 projects[geophp][version] = "1.7"
@@ -138,9 +138,6 @@ projects[entityreference_prepopulate][subdir] = "contrib"
 projects[ckeditor_link][version] = "2.3"
 projects[ckeditor_link][subdir] = "contrib"
 
-projects[ckeditor_link_file][version] = "1.3"
-projects[ckeditor_link_file][subdir] = "contrib"
-
 projects[image_resize_filter][version] = "1.14"
 projects[image_resize_filter][subdir] = "contrib"
 
@@ -156,7 +153,7 @@ projects[menu_firstchild][subdir] = "contrib"
 projects[menu_trail_by_path][version] = "2.0"
 projects[menu_trail_by_path][subdir] = "contrib"
 
-projects[webform][version] = "4.0-rc6"
+projects[webform][version] = "4.1"
 projects[webform][subdir] = "contrib"
 
 projects[form_builder][version] = "1.5"
@@ -294,31 +291,46 @@ projects[shield][subdir] = "contrib"
 projects[og][version] = "2.7"
 projects[og][subdir] = "contrib"
 
+projects[disqus][version] = "1.10"
+projects[disqus][subdir] = "contrib"
+
+projects[fast_404][version] = "1.3"
+projects[fast_404][subdir] = "contrib"
+
+
+projects[ckeditor][version] = "1.16"
+projects[ckeditor][subdir] = "contrib"
+
+projects[file_entity][version] = "2.0-beta1"
+projects[file_entity][subdir] = "contrib"
+
+projects[media][version] = "2.0-alpha4"
+projects[media][subdir] = "contrib"
 
 ; +++++ Modules Dev/specific revisions +++++
 ; @todo
 ; * Best practice is to point to specific git commits.
 ; * Have a note for each of these explaining the feature (with links) that requires -dev branch
 
-; Verified working Oct 4?
+; Removed Nov 4: using supported version
 ; Adds media/ckeditor integration
-projects[file_entity][version] = "2.x-dev"
-projects[file_entity][type] = "module"
-projects[file_entity][subdir] = "contrib"
-projects[file_entity][download][type] = "git"
-projects[file_entity][download][revision] = "1e037ad"
-projects[file_entity][download][branch] = "7.x-2.x"
+;projects[file_entity][version] = "2.x-dev"
+;projects[file_entity][type] = "module"
+;projects[file_entity][subdir] = "contrib"
+;projects[file_entity][download][type] = "git"
+;projects[file_entity][download][revision] = "1e037ad"
+;projects[file_entity][download][branch] = "7.x-2.x"
 
-; Verified working Oct 4?
+; Removed Nov 4: using supported version
 ; Adds media/ckeditor integration
 ; Note we are holding on this commit because of an issue with the Edit button disappearing
 ; See: https://drupal.org/comment/8608583#comment-8608583
-projects[media][version] = "2.x-dev"
-projects[media][type] = "module"
-projects[media][subdir] = "contrib"
-projects[media][download][type] = "git"
-projects[media][download][revision] = "e4c529a"
-projects[media][download][branch] = "7.x-2.x"
+;projects[media][version] = "2.x-dev"
+;projects[media][type] = "module"
+;projects[media][subdir] = "contrib"
+;projects[media][download][type] = "git"
+;projects[media][download][revision] = "e4c529a"
+;projects[media][download][branch] = "7.x-2.x"
 
 ; Oct 8 - switching to using ckeditor_media for media-ckeditor integration
 ; Adds media/ckeditor integration
@@ -327,9 +339,6 @@ projects[media][download][branch] = "7.x-2.x"
 ;projects[ckeditor][download][type] = "git"
 ;projects[ckeditor][download][revision] = "b29372f"
 ;projects[ckeditor][download][branch] = "7.x-1.x"
-
-projects[ckeditor][version] = "1.15"
-projects[ckeditor][subdir] = "contrib"
 
 ; From Oct 8, 2014: No offial release
 projects[ckeditor_media][version] = "1.x-dev"
@@ -367,6 +376,15 @@ projects[feeds][subdir] = "contrib"
 projects[feeds][download][type] = "git"
 projects[feeds][download][revision] = "a8468ac"
 projects[feeds][download][branch] = "7.x-1.x"
+
+
+; From Nov 3, 2014
+; Bugfix to ckeditor_link_file module
+; Don't print HTML warning message to screen, log it instead
+projects[ckeditor_link_file][subdir] = "contrib"
+projects[ckeditor_link_file][download][type] = "git"
+projects[ckeditor_link_file][download][revision] = "abbd337"
+projects[ckeditor_link_file][download][branch] = "7.x-1.x"
 
 
 ; +++++ Modules No longer downloaded +++++
@@ -532,14 +550,22 @@ projects[context][patch][795058] = "http://drupal.org/files/issues/795058-75-con
 projects[redirect][patch][1796596s] = "http://drupal.org/files/issues/redirect.circular-loops.1796596-124.patch"
 
 ; Make medium the default display suite and layout instead of large
-projects[zurb-foundation][patch][2237041] = "https://www.drupal.org/files/issues/zurb_foundation-2237041-default-layout-classes-3.patch"
+projects[zurb-foundation][patch][2237041] = "http://drupal.org/files/issues/zurb_foundation-2237041-default-layout-classes-3.patch"
 
 ; Fix to add remove upload tab from ckeditor_media
-projects[ckeditor][patch][2355895] = "http://drupal.org/files/issues/ckeditor_media-image2-remove-upload-tab.patch"
+projects[ckeditor_media][patch][2355895] = "http://drupal.org/files/issues/ckeditor_media-image2-remove-upload-tab.patch"
 
 ; ckeditor_media: Title and Alt tags don't come through when adding new images
-projects[ckeditor][patch][2345305] = "http://drupal.org/files/issues/Add-support-for-population-of-alt-title-attributes-2345305-1.patch"
+projects[ckeditor_media][patch][2345305] = "http://drupal.org/files/issues/Add-support-for-population-of-alt-title-attributes-2345305-1.patch"
 
+; share42: Add display suite integration
+projects[share42][patch][2357711] = "http://drupal.org/files/issues/share42-display-suite.patch"
+
+; share42: Add display suite integration
+projects[share42][patch][2357711] = "http://drupal.org/files/issues/share42-display-suite.patch"
+
+; disqus: Add display suite integration
+projects[disqus][patch][863122] = "http://drupal.org/files/issues/863122-disqus-ds-integration-18.patch"
 
 
 ; +++++ Patches No longer used +++++

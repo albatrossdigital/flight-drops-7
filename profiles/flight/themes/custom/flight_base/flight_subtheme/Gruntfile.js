@@ -6,17 +6,24 @@ module.exports = function(grunt) {
 
   var globalConfig = {
     theme_css: 'css',
-    theme_scss: 'sass',
+    theme_scss: 'scss',
     theme_compass: false,
     theme_dist: 'nested'
   };
 
-  var sassFiles = {
-    '<%= globalConfig.theme_css %>/ckeditor.css': '<%= globalConfig.theme_scss %>/ckeditor.<%= globalConfig.theme_scss %>',
-    '<%= globalConfig.theme_css %>/custom.css': '<%= globalConfig.theme_scss %>/custom.<%= globalConfig.theme_scss %>',
-    '<%= globalConfig.theme_css %>/custom-foundation.css': '<%= globalConfig.theme_scss %>/custom-foundation.<%= globalConfig.theme_scss %>',
-    '<%= globalConfig.theme_css %>/ie.css': '<%= globalConfig.theme_scss %>/ie.<%= globalConfig.theme_scss %>'
-  };
+  // Set up our sass files
+  var sassFiles = {},
+      fileNames = [
+        'ckeditor',
+        'custom',
+        'custom-foundation',
+        'ie',
+      ];
+
+  // compile sass file paths
+  for(var i = 0; i < fileNames.length; i++) {
+    sassFiles['<%= globalConfig.theme_css %>/' + fileNames[i] + '.css'] = 'sass/' + fileNames[i] + '.<%= globalConfig.theme_scss %>';
+  }
 
   grunt.initConfig({
     globalConfig: globalConfig,
@@ -28,10 +35,17 @@ module.exports = function(grunt) {
 
     // Lib-sass
     sass: {
+      //options: {
+        //sourceMap: true
+      //},
       dev: {
         options: {
           outputStyle: 'nested', // expanded or nested or compact or compressed
-          includePaths: ['<%= globalConfig.theme_scss %>'],
+          includePaths: [
+            'sass',
+            'bower_components/foundation/scss',
+            'bower_components/bourbon/dist'
+          ],
           imagePath: '../images/unminified'
         },
         files: sassFiles
@@ -39,7 +53,11 @@ module.exports = function(grunt) {
       dist: {
         options: {
           outputStyle: 'compressed', // expanded or nested or compact or compressed
-          includePaths: ['<%= globalConfig.theme_scss %>'],
+          includePaths: [
+            '<%= globalConfig.theme_scss %>',
+            'bower_components/foundation/scss',
+            'bower_components/bourbon/dist'
+          ],
           imagePath: '../images'
         },
         files: sassFiles
@@ -52,10 +70,6 @@ module.exports = function(grunt) {
       sass: {
         files: ['<%= globalConfig.theme_scss %>/{,**/}*.s*ss'],
         tasks: ['sass:dev']
-      },
-      coffee: {
-        files: ['js/{,**/}*.coffee'],
-        tasks: ['coffee']
       },
       js: {
         files: [
@@ -168,7 +182,7 @@ module.exports = function(grunt) {
   grunt.registerTask('compile-sass', ['warn', 'sass:dist','stripmq', 'imagemin']);
 
   // Run watch at default settings
-  grunt.registerTask('default', ['warn', 'sass:dev','stripmq','jshint','watch']);
+  grunt.registerTask('default', ['warn', 'sass:dev','stripmq','watch']);
 
   // Run watch with options
   grunt.registerTask('build', ['warn', 'compile-sass', 'uglify']);

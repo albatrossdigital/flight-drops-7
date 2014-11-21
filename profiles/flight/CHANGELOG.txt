@@ -5,6 +5,7 @@ Changes for beta2
 - Removed wysiwyg_template
 - Improved the CKEditor media and template experience by integrating ckeditor_media, ckeditor_widgets, image_resize_filter
 - Bugfixes to module install error to fix various fatal JS errors on clean install
+- Added disqus, fast_404 modules (not enabled by default)
 
 Changes for beta1
 - Remade all features (content types, reach_blocks, reach_input_formats)

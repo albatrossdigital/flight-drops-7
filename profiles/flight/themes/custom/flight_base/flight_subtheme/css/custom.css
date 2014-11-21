@@ -1,27 +1,26 @@
-/*
- * Theme specific variables. */
+/* Theme specific variables. */
 meta.foundation-version {
-  font-family: "/5.4.1/"; }
+  font-family: "/5.4.7/"; }
 
 meta.foundation-mq-small {
   font-family: "/only screen/";
   width: 0em; }
 
 meta.foundation-mq-medium {
-  font-family: "/only screen and (min-width:40.0625em)/";
-  width: 40.0625em; }
+  font-family: "/only screen and (min-width:40.0625rem)/";
+  width: 40.0625rem; }
 
 meta.foundation-mq-large {
-  font-family: "/only screen and (min-width:60.0625em)/";
-  width: 60.0625em; }
+  font-family: "/only screen and (min-width:60.0625rem)/";
+  width: 60.0625rem; }
 
 meta.foundation-mq-xlarge {
-  font-family: "/only screen and (min-width:90.0625em)/";
-  width: 90.0625em; }
+  font-family: "/only screen and (min-width:90.0625rem)/";
+  width: 90.0625rem; }
 
 meta.foundation-mq-xxlarge {
-  font-family: "/only screen and (min-width:120.0625em)/";
-  width: 120.0625em; }
+  font-family: "/only screen and (min-width:120.0625rem)/";
+  width: 120.0625rem; }
 
 meta.foundation-data-attribute-namespace {
   font-family: false; }
@@ -54,14 +53,14 @@ i[class^="fa"], .draggable a.tabledrag-handle:before {
   text-indent: 0; }
 
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome/fontawesome-webfont.eot?v=4.2.0');
-  src: url('../fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../fonts/fontawesome/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../fonts/fontawesome/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../fonts/fontawesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-family: "FontAwesome";
+  src: url("../fonts/fontawesome/fontawesome-webfont.eot?v=4.2.0");
+  src: url("../fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.2.0") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff?v=4.2.0") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf?v=4.2.0") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-     readers do not read off random characters that represent icons */
+   * readers do not read off random characters that represent icons */
 i[class^="fa"] {
   margin-right: 0.75em; }
   .icon-right i[class^="fa"] {
@@ -1545,13 +1544,13 @@ div.form-type-password-confirm .description {
   font-weight: normal; }
 
 .label-inline {
-  font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+  font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-style: normal;
   font-weight: normal; }
 
 div.form-type-password-confirm .description {
   font-size: 100%;
-  line-height: 150%; }
+  line-height: 1.5; }
 
 .admin-menu .fixed {
   top: 1.8125rem; }
@@ -1615,12 +1614,12 @@ div.form-type-password-confirm .description {
   margin-top: -1.3125rem; }
 
 meta.before-menu {
-  font-family: "/only screen and (max-width:51.5625em)/";
-  max-width: 51.5625em; }
+  font-family: "/only screen and (max-width:51.5625rem)/";
+  max-width: 51.5625rem; }
 
 meta.past-menu {
-  font-family: "/only screen and (min-width:51.625em)/";
-  min-width: 51.625em; }
+  font-family: "/only screen and (min-width:51.625rem)/";
+  min-width: 51.625rem; }
 
 html body.admin-menu {
   margin-top: 0px !important; }
@@ -1630,16 +1629,15 @@ html body.admin-menu {
 html, body {
   max-width: 100% Z; }
 
-@media only screen and (min-width:40.0625em) { }
-
-@media only screen and (min-width:51.625em) {
+@media only screen and (min-width:51.625rem) {
   .move-left > .inner-wrap {
     -ms-transform: translate(0, 0);
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); } }
+    transform: translate3d(0, 0, 0); }
+ }
 
 .tabledrag-toggle-weight-wrapper {
   display: none; }
@@ -1784,13 +1782,14 @@ form.confirmation .form-submit {
   margin-right: 0.625rem;
   margin-top: 1.25rem; }
 
-@media only screen and (min-width:40.0625em) {
+@media only screen and (min-width:40.0625rem) {
   .page-user div.main > form > div > .form-item {
     max-width: 50%;
     clear: left; }
   .page-user div.main > form > div > .form-submit {
     clear: both;
-    display: block; } }
+    display: block; }
+ }
 
 .views-exposed-form label {
   font-weight: bold; }
@@ -1823,19 +1822,21 @@ form.confirmation .form-submit {
     padding: 0;
     font-size: 1rem; }
   .views-reset-button button:focus, .views-reset-button button:hover, .views-reset-button button:active {
-    color: #007ba0;
+    color: #0078a0;
     outline: 0; }
 
 .views-content > h3, .grouping-content > h2 {
   margin-bottom: 0.75rem; }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 40rem) {
   .views-exposed-widgets > [class*='views-widget-filter-'] {
-    width: 100% !important; } }
+    width: 100% !important; }
+ }
 
-@media only screen and (min-width:40.0625em) {
+@media only screen and (min-width:40.0625rem) {
   .views-reset-button button {
-    margin-left: -0.9375rem; } }
+    margin-left: -0.9375rem; }
+ }
 
 .group-left > h1:first-child, .group-left > h2:first-child, .group-left > h3:first-child, .group-left > h4:first-child, .group-left > h5:first-child, .group-left > h6:first-child, .group-right > h1:first-child, .group-right > h2:first-child, .group-right > h3:first-child, .group-right > h4:first-child, .group-right > h5:first-child, .group-right > h6:first-child, .group-header > h1:first-child, .group-header > h2:first-child, .group-header > h3:first-child, .group-header > h4:first-child, .group-header > h5:first-child, .group-header > h6:first-child, .group-header > h1:first-child, .group-header > h2:first-child, .group-header > h3:first-child, .group-header > h4:first-child, .group-header > h5:first-child, .group-header > h6:first-child, .field-name-body > h1:first-child, .field-name-body > h2:first-child, .field-name-body > h3:first-child, .field-name-body > h4:first-child, .field-name-body > h5:first-child, .field-name-body > h6:first-child, .columns > h1:first-child, .columns > h2:first-child, .columns > h3:first-child, .columns > h4:first-child, .columns > h5:first-child, .columns > h6:first-child {
   margin-top: 0; }

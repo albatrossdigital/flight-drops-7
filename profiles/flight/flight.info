@@ -104,7 +104,8 @@ dependencies[] = pathauto_persist
 dependencies[] = redirect
 dependencies[] = googleanalytics
 dependencies[] = metatag
-dependencies[] = metatag_ui
+; Seems to de deprecated in new version
+; dependencies[] = metatag_ui
 dependencies[] = metatag_opengraph
 dependencies[] = share42
 #dependencies[] = linkchecker

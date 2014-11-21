@@ -107,6 +107,36 @@ function share42_block_view($delta = '') {
   }
 }
 
+
+/**
+ *  Implementation of hook_ds_fields_info().
+ */
+function share42_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['node'] = array(
+    'share42' => array(
+      'title' => t('Share 42 sharing tools'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'function' => '_share42_ds_view',
+    ),
+  );
+
+  return $fields;
+}
+
+/**
+ * Display the share42 buttons for a node
+ */
+function _share42_ds_view(array &$field) {
+  $entity = $field['entity'];
+  $block = share42_block_view('share42');
+  $block['content']['#attributes']['data-url'] = url('node/' . $entity->nid, array('absolute' => TRUE));
+  $block['content']['#attributes']['data-title'] = $entity->title;
+  return drupal_render($block['content']);
+}
+
+
 /**
  * Returns the path to the Share42 library.
  */
