@@ -8,7 +8,7 @@
 //------------------------------------------
 
 // you have the theme in the sites/all/themes/custom folder
-@import "../../../../../../profiles/flight/themes/custom/flight_base/sass/_include.sass";
+// @import "../../../../../../profiles/flight/themes/custom/flight_base/sass/_include.sass";
 
 // you have the theme in the sites/all/themes/ folder or sites/SITENAME/themes/
 //@import ../../../../../profiles/flight/themes/custom/flight_base/sass/_include.sass
@@ -17,7 +17,7 @@
 //@import ../../../flight_base/sass/_include.sass
 
 // Dev in flight subtheme
-//@import "../../../sass/_include.sass";
+@import "../../../sass/_include.sass";
 
 // Theme Variables
 //------------------------------------------

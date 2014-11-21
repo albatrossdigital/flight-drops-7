@@ -3,18 +3,36 @@
   max-width: 100%;
 }
 
+.contain-to-grid {
+  width: 100%;
+  background: $tabbar-bg;
+
+  .tab-bar {
+    max-width: $row-width;
+    margin: 0 auto; 
+  }
+}
+
+.tab-bar {
+  max-width: $row-width;
+  margin: 0 auto; 
+  
+  a {
+    color: $tabbar-color;
+
+    &:hover {
+      color: darken($tabbar-color, 10%);
+    }
+  }
+}
+
 // Main Menu
 // ------------------------------------------------------
 
-$off-menu-border: lighten($blue, 2%);
-
-.right-off-canvas-menu {
+.left-off-canvas-menu {
   .menu-name-main-menu {
     ul {
       @include list-clear;
-    }
-    a {
-      @include icon-after($fa-var-angle-right, $off-menu-border);
     }
   }
 }
@@ -25,78 +43,51 @@ $off-menu-border: lighten($blue, 2%);
 // ******************************************************
 
 @include respond($small-to-menu) {
-  // Topbar
+
+  // Tabbar
   // ------------------------------------------------------
-  .header-menu-wrap {
-    float: none !important;
-    .block {
-      width: (100% / 3);
-    }
-    .button {
-      padding-left: 0;
-      padding-right: 0;
-      width: 100%;
-    }
+  
+  // Force offcanvas to be possible
+  .tab-bar {
+    position: static;
   }
-  // Logo, ect
-  // ------------------------------------------------------
-  // logo
-  .title-area > a {
-    display: block;
-    max-width: 60%;
-  }
+
+
   // Main Menu
   // ------------------------------------------------------
-  .right-off-canvas-menu {
-    padding-top: $header-menu-height;
+  .left-off-canvas-menu {
     padding-left: 0;
     padding-right: 0;
+
+    .left-off-canvas-toggle {
+      padding: $off-canvas-link-padding;
+    }
+    
     & > * {
       max-width: $off-canvas-width;
-      @include column-padding;
       overflow: hidden;
     }
-    #cart-wrapper, .menu-name-main-menu {
-      @include expand-row;
-      border-top: 2px solid $off-menu-border;
-    }
-    #cart-wrapper {
-      padding: 0 $column-gutter / 2;
-      height: $header-menu-height;
-    }
-    .menu-name-main-menu {
-      a {
-        @include horizontal-menu-link($white, $off-menu-border);
-        display: block;
-        padding: 0 $column-gutter / 2;
-        &:after {
-          float: right;
-          line-height: $header-menu-height;
-          padding-right: 0;
-        }
-        &:hover, &:active {
-          border-color: lighten($blue, 3%);
-          background: darken($blue, 3%);
-          &:after {
-            color: $white;
-          }
-        }
-      }
-      .active-trail, .active {
-        a {
-          color: $blue-dark;
-          background: darken($blue, 3%);
-        }
-      }
+
+    ul {
+      border-top: $off-canvas-link-border-bottom;
+      width: 100%;
+      @include off-canvas-list();
     }
   }
 }
 
 
 @include respond($past-menu) {
+
+  // Toggle buttons
+  .menu-toggle,
+  .left-off-canvas-toggle {
+    display: none;
+  }
+ 
   // Main Menu
   // ------------------------------------------------------
-  .right-off-canvas-menu {
+  .left-off-canvas-menu {
     background: none;
     position: relative !important;
     overflow: visible;
@@ -104,23 +95,75 @@ $off-menu-border: lighten($blue, 2%);
     height: auto !important;
     @include translate3d(0, 0, 0);
     @include box-sizing(border-box);
-    width: grid-calc(9, 12) !important;
+    width: 100%!important;
     z-index: 1;
-    .menu-name-main-menu {
-      border-top: 0;
-      margin-top: rem-calc(15);
-      @include expand-row(0);
-      ul {
-        @include clearfix;
-        float: right;
-        @include main-menu-style-horizontal(true);
-        li {
-          margin-bottom: 0;
+
+    // From foundation: components/top-bar
+    // -----------------------------------------------
+    ul {
+      @include clearfix;
+      margin-bottom: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 0;
+        background: $topbar-dropdown-bg;
+
+        & > a {
+          display: block;
+          width: 100%;
+          color: $topbar-link-color;
+          padding: 12px 0 12px 0;
+          padding-#{$default-float}: $topbar-link-padding;
+          font-family: $topbar-link-font-family;
+          font-size: $topbar-link-font-size;
+          font-weight: $topbar-link-weight;
+          text-transform: $topbar-link-text-transform;
+          &.button {
+            font-size: $topbar-link-font-size;
+            padding-#{$opposite-direction}: $topbar-link-padding;
+            padding-#{$default-float}: $topbar-link-padding;
+            @include button-style($bg:$primary-color);
+          }
+          &.button.secondary { @include button-style($bg:$secondary-color); }
+          &.button.success { @include button-style($bg:$success-color); }
+          &.button.alert { @include button-style($bg:$alert-color); }
+          &.button.warning { @include button-style($bg:$warning-color); }
         }
-      }
-      a {
-        &:after {
-          display: none;
+
+        &.hover {
+          > a:not(.button) {
+            background-color: $topbar-link-bg-color-hover;
+            @if ($topbar-link-bg-hover) {
+              background: $topbar-link-bg-hover;
+            }
+            color: $topbar-link-color-hover;
+          }
+        }
+        &:not(.has-form) {
+          a:not(.button) {
+            padding: 0 $topbar-link-padding;
+            line-height: $topbar-height;
+            background: $topbar-link-bg;
+            &:hover {
+              background-color: $topbar-link-bg-color-hover;
+              @if ($topbar-link-bg-hover) {
+                background: $topbar-link-bg-hover;
+              }
+            }
+          }
+        }
+        &.active:not(.has-form) {
+          a:not(.button) {
+            padding: 0 $topbar-link-padding;
+            line-height: $topbar-height;
+            color: $topbar-link-color-active;
+            background: $topbar-link-bg-active;
+            &:hover {
+              background: $topbar-link-bg-active-hover;
+              color: $topbar-link-color-active-hover;
+            }
+          }
         }
       }
     }

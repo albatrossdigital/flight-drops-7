@@ -68,7 +68,7 @@ module.exports = function(grunt) {
       grunt: { files: ['Gruntfile.js'] },
 
       sass: {
-        files: ['<%= globalConfig.theme_scss %>/{,**/}*.s*ss'],
+        files: ['sass/{,**/}*.s*ss'],
         tasks: ['sass:dev']
       },
       js: {

@@ -1639,6 +1639,15 @@ html, body {
     transform: translate3d(0, 0, 0); }
  }
 
+.l-logo {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem; }
+
+@media only screen and (max-width: 40rem) {
+  .l-logo {
+    text-align: center; }
+ }
+
 .tabledrag-toggle-weight-wrapper {
   display: none; }
 
@@ -1789,6 +1798,182 @@ form.confirmation .form-submit {
   .page-user div.main > form > div > .form-submit {
     clear: both;
     display: block; }
+ }
+
+.off-canvas-wrap {
+  overflow: hidden;
+  max-width: 100%; }
+
+.contain-to-grid {
+  width: 100%;
+  background: #333333; }
+  .contain-to-grid .tab-bar {
+    max-width: 62.5rem;
+    margin: 0 auto; }
+
+.tab-bar {
+  max-width: 62.5rem;
+  margin: 0 auto; }
+  .tab-bar a {
+    color: #fff; }
+    .tab-bar a:hover {
+      color: #e6e6e6; }
+
+.left-off-canvas-menu .menu-name-main-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+@media only screen and (max-width:51.5625rem) {
+  .tab-bar {
+    position: static; }
+
+  .left-off-canvas-menu {
+    padding-left: 0;
+    padding-right: 0; }
+    .left-off-canvas-menu .left-off-canvas-toggle {
+      padding: 0.6666666667rem; }
+    .left-off-canvas-menu > * {
+      max-width: 15.625rem;
+      overflow: hidden; }
+    .left-off-canvas-menu ul {
+      border-top: 1px solid #262626;
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+      margin: 0; }
+      .left-off-canvas-menu ul li label {
+        display: block;
+        padding: 0.3rem 0.9375rem;
+        color: #999999;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: bold;
+        background: #444444;
+        border-top: 1px solid #5e5e5e;
+        border-bottom: none;
+        margin: 0; }
+      .left-off-canvas-menu ul li a {
+        display: block;
+        padding: 0.6666666667rem;
+        color: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid #262626;
+        transition: background 300ms ease; }
+        .left-off-canvas-menu ul li a:hover {
+          background: #242424; }
+ }
+
+@media only screen and (min-width:51.625rem) {
+  .menu-toggle, .left-off-canvas-toggle {
+    display: none; }
+
+  .left-off-canvas-menu {
+    background: none;
+    position: relative !important;
+    overflow: visible;
+    padding-top: 0;
+    height: auto !important;
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100% !important;
+    z-index: 1; }
+    .left-off-canvas-menu ul {
+      /* IE6 */
+      /* IE7 */
+      margin-bottom: 0;
+      list-style: none; }
+      .left-off-canvas-menu ul:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden; }
+      .left-off-canvas-menu ul * html {
+        height: 1%; }
+      .clearfix *:first-child + html .left-off-canvas-menu ul {
+        min-height: 1%; }
+      .left-off-canvas-menu ul li {
+        margin-bottom: 0;
+        background: #333333; }
+        .left-off-canvas-menu ul li > a {
+          display: block;
+          width: 100%;
+          color: #fff;
+          padding: 12px 0 12px 0;
+          padding-left: 15px;
+          font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+          font-size: 0.8125rem;
+          font-weight: normal;
+          text-transform: none; }
+          .left-off-canvas-menu ul li > a.button {
+            font-size: 0.8125rem;
+            padding-right: 15px;
+            padding-left: 15px;
+            background-color: #008CBA;
+            border-color: #007095;
+            color: #fff; }
+            .left-off-canvas-menu ul li > a.button:hover, .left-off-canvas-menu ul li > a.button:focus {
+              background-color: #007095; }
+            .left-off-canvas-menu ul li > a.button:hover, .left-off-canvas-menu ul li > a.button:focus {
+              color: #fff; }
+          .left-off-canvas-menu ul li > a.button.secondary {
+            background-color: #e7e7e7;
+            border-color: #b9b9b9;
+            color: #333333; }
+            .left-off-canvas-menu ul li > a.button.secondary:hover, .left-off-canvas-menu ul li > a.button.secondary:focus {
+              background-color: #b9b9b9; }
+            .left-off-canvas-menu ul li > a.button.secondary:hover, .left-off-canvas-menu ul li > a.button.secondary:focus {
+              color: #333333; }
+          .left-off-canvas-menu ul li > a.button.success {
+            background-color: #43AC6A;
+            border-color: #368a55;
+            color: #fff; }
+            .left-off-canvas-menu ul li > a.button.success:hover, .left-off-canvas-menu ul li > a.button.success:focus {
+              background-color: #368a55; }
+            .left-off-canvas-menu ul li > a.button.success:hover, .left-off-canvas-menu ul li > a.button.success:focus {
+              color: #fff; }
+          .left-off-canvas-menu ul li > a.button.alert {
+            background-color: #f04124;
+            border-color: #cf2a0e;
+            color: #fff; }
+            .left-off-canvas-menu ul li > a.button.alert:hover, .left-off-canvas-menu ul li > a.button.alert:focus {
+              background-color: #cf2a0e; }
+            .left-off-canvas-menu ul li > a.button.alert:hover, .left-off-canvas-menu ul li > a.button.alert:focus {
+              color: #fff; }
+          .left-off-canvas-menu ul li > a.button.warning {
+            background-color: #f08a24;
+            border-color: #cf6e0e;
+            color: #fff; }
+            .left-off-canvas-menu ul li > a.button.warning:hover, .left-off-canvas-menu ul li > a.button.warning:focus {
+              background-color: #cf6e0e; }
+            .left-off-canvas-menu ul li > a.button.warning:hover, .left-off-canvas-menu ul li > a.button.warning:focus {
+              color: #fff; }
+        .left-off-canvas-menu ul li.hover > a:not(.button) {
+          background-color: #555555;
+          background: #272727;
+          color: #fff; }
+        .left-off-canvas-menu ul li:not(.has-form) a:not(.button) {
+          padding: 0 15px;
+          line-height: 45px;
+          background: #333333; }
+          .left-off-canvas-menu ul li:not(.has-form) a:not(.button):hover {
+            background-color: #555555;
+            background: #272727; }
+        .left-off-canvas-menu ul li.active:not(.has-form) a:not(.button) {
+          padding: 0 15px;
+          line-height: 45px;
+          color: #fff;
+          background: #008CBA; }
+          .left-off-canvas-menu ul li.active:not(.has-form) a:not(.button):hover {
+            background: #0078a0;
+            color: #fff; }
  }
 
 .views-exposed-form label {

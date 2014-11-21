@@ -1,56 +1,83 @@
 <!--.page -->
-<div data-offcanvas role="document" class="page off-canvas-wrap"><div class="inner-wrap">
+<div role="document" class="page">
 
   <!--.l-header region -->
   <header role="banner" class="l-header">
 
-    <!-- .top-bar -->
-    <div class="contain-to-grid">
-      <nav class="tab-bar">
-        <section class="title-area left">
-          <a class="left-off-canvas-toggle columns" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a>
-        </section>
-        <section class="top-bar-section left-off-canvas-menu">
-          <a class="left-off-canvas-toggle" href="#"><span><?php print t('Close'); ?></span> <i class="fa-times"></i></a>
+    <?php if ($top_bar): ?>
+      <!--.top-bar -->
+      <?php if ($top_bar_classes): ?>
+        <div class="<?php print $top_bar_classes; ?>">
+      <?php endif; ?>
+      <nav class="top-bar" data-topbar <?php print $top_bar_options; ?>>
+        <ul class="title-area">
+          <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
+        </ul>
+        <section class="top-bar-section">
           <?php if ($top_bar_main_menu) :?>
             <?php print $top_bar_main_menu; ?>
           <?php endif; ?>
           <?php if ($top_bar_secondary_menu) :?>
             <?php print $top_bar_secondary_menu; ?>
           <?php endif; ?>
-          <?php if (!empty($page['topbar'])): ?>
-            <?php print render($page['topbar']); ?>
-          <?php endif; ?>
         </section>
       </nav>
-    </div>
-    <!--/.top-bar -->
-
-    <!-- Title, slogan -->
-    <section class="l-branding"><div class="row">
-
-      <!--.l-logo -->
-      <div class="l-logo medium-3 columns">
-
-        <?php if ($linked_logo): print $linked_logo; endif; ?>
-
-        <div id="site-name" class="element-invisible">
-          <strong>
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-          </strong>
+      <?php if ($top_bar_classes): ?>
         </div>
+      <?php endif; ?>
+      <!--/.top-bar -->
+    <?php endif; ?>
 
-      </div>
-      <!-- /.l-logo -->
+    <!-- Title, slogan and menu -->
+    <?php if ($alt_header): ?>
+    <section class="row <?php print $alt_header_classes; ?>">
 
-      <!--.l-header-region -->
-      <div class="l-header-region medium-9 columns">
-        <?php print render($page['header']); ?>
-      </div>
-      <!--/.l-header-region -->
+      <?php if ($linked_logo): print $linked_logo; endif; ?>
 
-    </div></section>
+      <?php if ($site_name): ?>
+        <?php if ($title): ?>
+          <div id="site-name" class="element-invisible">
+            <strong>
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+            </strong>
+          </div>
+        <?php else: /* Use h1 when the content title is empty */ ?>
+          <h1 id="site-name">
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+          </h1>
+        <?php endif; ?>
+      <?php endif; ?>
+
+      <?php if ($site_slogan): ?>
+        <h2 title="<?php print $site_slogan; ?>" class="site-slogan"><?php print $site_slogan; ?></h2>
+      <?php endif; ?>
+
+      <?php if ($alt_main_menu): ?>
+        <nav id="main-menu" class="navigation" role="navigation">
+          <?php print ($alt_main_menu); ?>
+        </nav> <!-- /#main-menu -->
+      <?php endif; ?>
+
+      <?php if ($alt_secondary_menu): ?>
+        <nav id="secondary-menu" class="navigation" role="navigation">
+          <?php print $alt_secondary_menu; ?>
+        </nav> <!-- /#secondary-menu -->
+      <?php endif; ?>
+
+    </section>
+    <?php endif; ?>
     <!-- End title, slogan and menu -->
+
+    <?php if (!empty($page['header'])): ?>
+      <!--.l-header-region -->
+      <section class="l-header-region row">
+        <div class="medium-12 columns">
+          <?php print render($page['header']); ?>
+        </div>
+      </section>
+      <!--/.l-header-region -->
+    <?php endif; ?>
 
   </header>
   <!--/.l-header -->
@@ -132,12 +159,9 @@
   </main>
   <!--/.main-->
 
-  <?php if (!empty($page['triptych_full']) || !empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
+  <?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
     <!--.triptych-->
     <section class="l-triptych row">
-      <div class="triptych-full medium-12 columns">
-        <?php print render($page['triptych_full']); ?>
-      </div>
       <div class="triptych-first medium-4 columns">
         <?php print render($page['triptych_first']); ?>
       </div>
@@ -179,24 +203,21 @@
   <?php endif; ?>
 
   <!--.l-footer-->
-  <footer class="l-footer" role="contentinfo"><div class="row">
+  <footer class="l-footer panel row" role="contentinfo">
     <?php if (!empty($page['footer'])): ?>
       <div class="footer medium-12 columns">
         <?php print render($page['footer']); ?>
       </div>
     <?php endif; ?>
 
-    <div class="footer-bottom medium-12 columns">
-      <div class="footer-site-name">
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+    <?php if ($site_name) :?>
+      <div class="copyright medium-12 columns">
+        &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
       </div>
-      <?php if (!empty($page['footer_bottom'])): ?>
-        <?php print render($page['footer_bottom']); ?>
-      <?php endif; ?>
-    </div>
-  </div></footer>
+    <?php endif; ?>
+  </footer>
   <!--/.footer-->
 
   <?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>
-</div></div>
+</div>
 <!--/.page -->
