@@ -24,11 +24,12 @@ CKEDITOR.plugins.add( 'widgetfoundation', {
         
         // Configurable settings
         var allowedFull = editor.config.widgetFoundation_allowedFull != undefined ? editor.config.widgetFoundation_allowedFull :
+            'p br ul ol li strong em; a[!href]; img[!src,alt,width,height]; figcaption;' +
             'div(!row,two-col-left,two-col-right,accordion,two-col,three-col){width};' +
             'div(!columns,small-12,medium-3,medium-9,col-sidebar,col-main,col-1,col-2,col-3)'
             'div(!alert-box,success,alert,warning,info,secondary,alert-text)';
         var allowedWidget = editor.config.widgetFoundation_allowedWidget != undefined ? editor.config.widgetFoundation_allowedFull :
-            'p span br ul ol li strong em img[!src,alt,width,height]';
+            'p br ul ol li strong em; a[!href]; img[!src,alt,width,height]; figcaption;';
         var allowedText = editor.config.widgetFoundation_allowedText != undefined ? editor.config.widgetFoundation_allowedFull :
             'p span br ul ol li strong em';
 
