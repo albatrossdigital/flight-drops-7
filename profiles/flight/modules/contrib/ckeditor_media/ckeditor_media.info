@@ -6,9 +6,9 @@ dependencies[] = media
 dependencies[] = ckeditor
 
 
-; Information added by drush on 2014-11-20
+; Information added by drush on 2015-02-11
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "ckeditor_media"
-datestamp = "1416527768"
+datestamp = "1423695636"
 

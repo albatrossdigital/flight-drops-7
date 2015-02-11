@@ -7,9 +7,9 @@ dependencies[] = file_entity
 configure = admin/config/content/ckeditor_link
 
 
-; Information added by drush on 2014-11-20
+; Information added by drush on 2015-02-11
 version = "7.x-1.3+2-dev"
 core = "7.x"
 project = "ckeditor_link_file"
-datestamp = "1416527753"
+datestamp = "1423695644"
 

@@ -12,9 +12,9 @@ files[] = MediaInternetOEmbedHandler.inc
 configure = admin/config/media/oembed
 
 
-; Information added by drush on 2014-11-20
+; Information added by drush on 2015-02-11
 version = "7.x-1.0-rc2+24-dev"
 core = "7.x"
 project = "oembed"
-datestamp = "1416527764"
+datestamp = "1423695640"
 
