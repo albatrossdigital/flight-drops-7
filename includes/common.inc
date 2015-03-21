@@ -2236,8 +2236,20 @@ function url($path = NULL, array $options = array()) {
     'prefix' => ''
   );
 
+  // A duplicate of the code from url_is_external() to avoid needing another
+  // function call, since performance inside url() is critical.
   if (!isset($options['external'])) {
-    $options['external'] = url_is_external($path);
+    // Return an external link if $path contains an allowed absolute URL. Avoid
+    // calling drupal_strip_dangerous_protocols() if there is any slash (/),
+    // hash (#) or question_mark (?) before the colon (:) occurrence - if any -
+    // as this would clearly mean it is not a URL. If the path starts with 2
+    // slashes then it is always considered an external URL without an explicit
+    // protocol part.
+    $colonpos = strpos($path, ':');
+    $options['external'] = (strpos($path, '//') === 0)
+      || ($colonpos !== FALSE
+        && !preg_match('![/?#]!', substr($path, 0, $colonpos))
+        && drupal_strip_dangerous_protocols($path) == $path);
   }
 
   // Preserve the original path before altering or aliasing.
@@ -2357,18 +2369,12 @@ function url($path = NULL, array $options = array()) {
  */
 function url_is_external($path) {
   $colonpos = strpos($path, ':');
-  // Some browsers treat \ as / so normalize to forward slashes.
-  $path = str_replace('\\', '/', $path);
-  // If the path starts with 2 slashes then it is always considered an external
-  // URL without an explicit protocol part.
+  // Avoid calling drupal_strip_dangerous_protocols() if there is any slash (/),
+  // hash (#) or question_mark (?) before the colon (:) occurrence - if any - as
+  // this would clearly mean it is not a URL. If the path starts with 2 slashes
+  // then it is always considered an external URL without an explicit protocol
+  // part.
   return (strpos($path, '//') === 0)
-    // Leading control characters may be ignored or mishandled by browsers, so
-    // assume such a path may lead to an external location. The \p{C} character
-    // class matches all UTF-8 control, unassigned, and private characters.
-    || (preg_match('/^\p{C}/u', $path) !== 0)
-    // Avoid calling drupal_strip_dangerous_protocols() if there is any slash
-    // (/), hash (#) or question_mark (?) before the colon (:) occurrence - if
-    // any - as this would clearly mean it is not a URL.
     || ($colonpos !== FALSE
       && !preg_match('![/?#]!', substr($path, 0, $colonpos))
       && drupal_strip_dangerous_protocols($path) == $path);
@@ -3648,7 +3654,7 @@ function drupal_build_css_cache($css) {
     $uri = $map[$key];
   }
 
-  if (empty($uri) || !file_exists($uri)) {
+  if (empty($uri) || !drupal_aggregated_file_exists($uri)) {
     // Build aggregate CSS file.
     foreach ($css as $stylesheet) {
       // Only 'file' stylesheets can be aggregated.
@@ -5051,6 +5057,19 @@ function drupal_add_tabledrag($table_id, $action, $relationship, $group, $subgro
   drupal_add_js($settings, 'setting');
 }
 
+function drupal_aggregated_file_exists($uri) {
+  if (function_exists('apc_exists')) {
+    $exists = apc_exists('file_exists_' . $uri);
+    if (!$exists && file_exists($uri)) {
+      $exists = TRUE;
+      apc_store('file_exists_' . $uri, TRUE, 86400);
+    }
+    return $exists;
+  }
+  // If no APC available, fall back to default.
+  return file_exists($uri);
+}
+
 /**
  * Aggregates JavaScript files into a cache file in the files directory.
  *
@@ -5090,7 +5109,7 @@ function drupal_build_js_cache($files) {
     $uri = $map[$key];
   }
 
-  if (empty($uri) || !file_exists($uri)) {
+  if (empty($uri) || !drupal_aggregated_file_exists($uri)) {
     // Build aggregate JS file.
     foreach ($files as $path => $info) {
       if ($info['preprocess']) {
@@ -5098,6 +5117,10 @@ function drupal_build_js_cache($files) {
         $contents .= file_get_contents($path) . ";\n";
       }
     }
+
+    // Allow modules to act on the js_cache before writing to disk.
+    drupal_alter('js_cache', $contents);
+
     // Prefix filename to prevent blocking by firewalls which reject files
     // starting with "ad*".
     $filename = 'js_' . drupal_hash_base64($contents) . '.js';
