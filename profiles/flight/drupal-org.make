@@ -301,10 +301,10 @@ projects[fast_404][subdir] = "contrib"
 projects[ckeditor][version] = "1.16"
 projects[ckeditor][subdir] = "contrib"
 
-projects[file_entity][version] = "2.0-beta1"
+projects[file_entity][version] = "2.0-beta2"
 projects[file_entity][subdir] = "contrib"
 
-projects[media][version] = "2.0-alpha4"
+projects[media][version] = "2.0-beta1"
 projects[media][subdir] = "contrib"
 
 ; +++++ Modules Dev/specific revisions +++++
