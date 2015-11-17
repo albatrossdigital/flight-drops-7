@@ -1,0 +1,24 @@
+--- modules/media_wysiwyg/includes/media_wysiwyg.filter.inc
++++ modules/media_wysiwyg/includes/media_wysiwyg.filter.inc
+@@ -252,14 +252,15 @@ function media_wysiwyg_pre_render_text_format($element) {
+     return $element;
+   }
+ 
+-  $field = &$element['value'];
+-  $settings = array(
+-    'field' => $field['#id'],
+-  );
++  $tagmap = array();
+ 
+-  $tagmap = _media_wysiwyg_generate_tagMap($field['#value']);
++  foreach (array('value', 'summary') as $column) {
++    if (isset($element[$column])) {
++      $tagmap = _media_wysiwyg_generate_tagMap($element[$column]['#value']);
++    }
++  }
+ 
+-  if (isset($tagmap)) {
++  if (!empty($tagmap)) {
+     drupal_add_js(array('tagmap' => $tagmap), 'setting');
+   }
+   return $element;
