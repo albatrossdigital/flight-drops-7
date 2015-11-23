@@ -567,6 +567,8 @@ projects[share42][patch][2357711] = "http://drupal.org/files/issues/share42-disp
 ; disqus: Add display suite integration
 projects[disqus][patch][863122] = "http://drupal.org/files/issues/863122-disqus-ds-integration-18.patch"
 
+; Fix CKEditor - media integration
+projects[ckeditor][patch][2454933] = "https://www.drupal.org/files/issues/Issue_2454933.patch"
 
 ; +++++ Patches No longer used +++++
 
