@@ -27,7 +27,7 @@ projects[bean][subdir] = "contrib"
 projects[ccl][version] = "1.5"
 projects[ccl][subdir] = "contrib"
 
-projects[ctools][version] = "1.4"
+projects[ctools][version] = "1.9"
 projects[ctools][subdir] = "contrib"
 
 projects[context][version] = "3.3"
@@ -39,16 +39,16 @@ projects[menu_trail_by_path][subdir] = "contrib"
 projects[devel][version] = "1.5"
 projects[devel][subdir] = "devel"
 
-projects[ds][version] = "2.7"
+projects[ds][version] = "2.14"
 projects[ds][subdir] = "contrib"
 
-projects[features][version] = "2.2"
+projects[features][version] = "2.10"
 projects[features][subdir] = "contrib"
 
 projects[email][version] = "1.3"
 projects[email][subdir] = "contrib"
 
-projects[field_group][version] = "1.4"
+projects[field_group][version] = "1.5"
 projects[field_group][subdir] = "contrib"
 
 projects[link][version] = "1.3"
@@ -105,10 +105,10 @@ projects[draggableviews][subdir] = "contrib"
 projects[views][version] = "3.8"
 projects[views][subdir] = "contrib"
 
-projects[views_bulk_operations][version] = "3.2"
+projects[views_bulk_operations][version] = "3.3"
 projects[views_bulk_operations][subdir] = "contrib"
 
-projects[admin_views][version] = "1.3"
+projects[admin_views][version] = "1.5"
 projects[admin_views][subdir] = "contrib"
 
 projects[media_inkfilepicker][version] = "1.0-beta1"
@@ -237,7 +237,7 @@ projects[better_exposed_filters][subdir] = "contrib"
 projects[smtp][version] = "1.0"
 projects[smtp][subdir] = "contrib"
 
-projects[migrate][version] = "2.5"
+projects[migrate][version] = "2.8"
 projects[migrate][subdir] = "migrate"
 
 projects[migrate_extras][version] = "2.5"
@@ -255,10 +255,13 @@ projects[focal_point][subdir] = "contrib"
 projects[quickedit][version] = "1.1"
 projects[quickedit][subdir] = "contrib"
 
+projects[jquery_update][version] = "2.7"
+projects[jquery_update][subdir] = "contrib"
+
 
 ; +++++ Modules to be evaluated for exclusion +++++
 
-projects[block_class][version] = "2.1"
+projects[block_class][version] = "2.3"
 projects[block_class][subdir] = "contrib"
 
 
@@ -288,7 +291,7 @@ projects[typekit][subdir] = "contrib"
 projects[shield][version] = "1.2"
 projects[shield][subdir] = "contrib"
 
-projects[og][version] = "2.7"
+projects[og][version] = "2.9"
 projects[og][subdir] = "contrib"
 
 projects[disqus][version] = "1.10"
@@ -297,6 +300,8 @@ projects[disqus][subdir] = "contrib"
 projects[fast_404][version] = "1.3"
 projects[fast_404][subdir] = "contrib"
 
+projects[feeds][version] = "2.0-beta2"
+projects[feeds][subdir] = "contrib"
 
 projects[ckeditor][version] = "1.16"
 projects[ckeditor][subdir] = "contrib"
@@ -348,17 +353,6 @@ projects[ckeditor_media][download][type] = "git"
 projects[ckeditor_media][download][revision] = "15369b9"
 projects[ckeditor_media][download][branch] = "7.x-1.x"
 
-; From Oct 13, 2013
-; Add jQuery 1.10.x as an option: https://drupal.org/node/2023789
-;projects[jquery_update][version] = "2.x-dev"
-;projects[jquery_update][subdir] = "contrib"
-;projects[jquery_update][download][type] = "git"
-;projects[jquery_update][download][revision] = "65eecb0"
-;projects[jquery_update][download][branch] = "7.x-1.x"
-
-projects[jquery_update][version] = "2.4"
-projects[jquery_update][subdir] = "contrib"
-
 
 ; From Feb 19, 2014
 ; The official releases for this module are really old (2012)
@@ -367,15 +361,6 @@ projects[oembed][subdir] = "contrib"
 projects[oembed][download][type] = "git"
 projects[oembed][download][revision] = "8492b9f"
 projects[oembed][download][branch] = "7.x-1.x"
-
-; From Feb 10, 2014
-; Fixes issue with ical_parser module
-; Adds support for the GenericEntityProccessor (for data module)
-projects[feeds][version] = "2.x-dev"
-projects[feeds][subdir] = "contrib"
-projects[feeds][download][type] = "git"
-projects[feeds][download][revision] = "a8468ac"
-projects[feeds][download][branch] = "7.x-1.x"
 
 
 ; From Nov 3, 2014
@@ -412,8 +397,6 @@ projects[ckeditor_link_file][download][branch] = "7.x-1.x"
 
 ;projects[imagecrop][version] = "1.x-dev"
 ;projects[imagecrop][subdir] = "contrib"
-
-
 
 
 
