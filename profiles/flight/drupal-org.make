@@ -102,7 +102,7 @@ projects[variable][subdir] = "contrib"
 projects[draggableviews][version] = "2.0"
 projects[draggableviews][subdir] = "contrib"
 
-projects[views][version] = "3.8"
+projects[views][version] = "3.13"
 projects[views][subdir] = "contrib"
 
 projects[views_bulk_operations][version] = "3.3"
