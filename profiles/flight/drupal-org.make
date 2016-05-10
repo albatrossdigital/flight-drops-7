@@ -553,6 +553,9 @@ projects[disqus][patch][863122] = "http://drupal.org/files/issues/863122-disqus-
 ; Fix CKEditor - media integration
 projects[ckeditor][patch][2454933] = "https://www.drupal.org/files/issues/Issue_2454933.patch"
 
+; Fix Views, exposed filter description on frontend
+projects[views][patch][339384] = "https://www.drupal.org/files/issues/views-fix-exposed-filter-description-339384-36-7.x-3.x.patch"
+
 ; +++++ Patches No longer used +++++
 
 ; Fix Issue with media and CKEditor ACF
