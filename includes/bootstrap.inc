@@ -8,7 +8,7 @@
 /**
  * The current system version.
  */
-define('VERSION', '7.35');
+define('VERSION', '7.50');
 
 /**
  * Core API compatibility.
@@ -743,31 +743,6 @@ function drupal_settings_initialize() {
   }
   $is_https = drupal_is_https();
 
-  // Load environmental config, if present.
-  if (isset($_SERVER['PRESSFLOW_SETTINGS'])) {
-    $pressflow_settings = json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE);
-    foreach ($pressflow_settings as $key => $value) {
-      // One level of depth should be enough for $conf and $database.
-      if ($key == 'conf') {
-        foreach($value as $conf_key => $conf_value) {
-          $conf[$conf_key] = $conf_value;
-        }
-      }
-      elseif ($key == 'databases') {
-        // Protect default configuration but allow the specification of
-        // additional databases. Also, allows fun things with 'prefix' if they
-        // want to try multisite.
-        if (!isset($databases) || !is_array($databases)) {
-          $databases = array();
-        }
-        $databases = array_replace_recursive($databases, $value);
-      }
-      else {
-        $$key = $value;
-      }
-    }
-  }
-
   if (isset($base_url)) {
     // Parse fixed base URL from settings.php.
     $parts = parse_url($base_url);
@@ -1107,8 +1082,8 @@ function _drupal_get_filename_perform_file_scan($type, $name) {
  */
 function _drupal_get_filename_fallback_trigger_error($type, $name, $error_type) {
   // Hide messages due to known bugs that will appear on a lot of sites.
-  // @todo Remove this in https://www.drupal.org/node/2383823
-  if (empty($name)) {
+  // @todo Remove this in https://www.drupal.org/node/2762241
+  if (empty($name) || ($type == 'module' && $name == 'default')) {
     return;
   }
 
@@ -1120,7 +1095,7 @@ function _drupal_get_filename_fallback_trigger_error($type, $name, $error_type) 
     // triggered during low-level operations that cannot necessarily be
     // interrupted by a watchdog() call.
     if ($error_type == 'missing') {
-      _drupal_trigger_error_with_delayed_logging(format_string('The following @type is missing from the file system: %name. For information about how to fix this, see <a href="@documentation">the documentation page</a>.', array('@type' => $type, '%name' => $name, '@documentation' => 'https://www.drupal.org/node/2487215')), E_USER_WARNING);
+      _drupal_trigger_error_with_delayed_logging(format_string('The following @type is missing from the file system: %name. In order to fix this, put the @type back in its original location. For more information, see <a href="@documentation">the documentation page</a>.', array('@type' => $type, '%name' => $name, '@documentation' => 'https://www.drupal.org/node/2487215')), E_USER_WARNING);
     }
     elseif ($error_type == 'moved') {
       _drupal_trigger_error_with_delayed_logging(format_string('The following @type has moved within the file system: %name. In order to fix this, clear caches or put the @type back in its original location. For more information, see <a href="@documentation">the documentation page</a>.', array('@type' => $type, '%name' => $name, '@documentation' => 'https://www.drupal.org/node/2487215')), E_USER_WARNING);
@@ -2770,22 +2745,6 @@ function _drupal_bootstrap_database() {
  */
 function _drupal_bootstrap_variables() {
   global $conf;
-
-  // Pressflow Smart Start
-  if (!empty($GLOBALS['databases']) && variable_get('pressflow_smart_start', FALSE)) {
-    try {
-      $result = db_query('SELECT s.name FROM {system} s WHERE s.name = :name', array(':name' => 'system'));
-    } catch (PDOException $e) {
-      if ($e->getCode() == '2003') {
-        header('Status: 550 Database Offline');
-        exit();
-      }
-      elseif ($e->getCode() == '42S02') {
-        include_once DRUPAL_ROOT . '/includes/install.inc';
-        install_goto('install.php');
-      }
-    }
-  }
 
   // Initialize the lock system.
   require_once DRUPAL_ROOT . '/' . variable_get('lock_inc', 'includes/lock.inc');

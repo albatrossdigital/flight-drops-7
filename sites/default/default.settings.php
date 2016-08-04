@@ -155,7 +155,7 @@
  *   These settings are available as of MySQL 5.5.14, and are defaults in
  *   MySQL 5.7.7 and up.
  * - The PHP MySQL driver must support the utf8mb4 charset (libmysqlclient
- *   5.5.3 and up, as well as mysqlnd 5.0.9 and up).
+     5.5.3 and up, as well as mysqlnd 5.0.9 and up).
  * - The MySQL server must support the utf8mb4 charset (5.5.3 and up).
  *
  * You can optionally set prefixes for some or all database table names
@@ -598,3 +598,24 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+<<<<<<< HEAD
+=======
+
+/**
+ * Theme debugging:
+ *
+ * When debugging is enabled:
+ * - The markup of each template is surrounded by HTML comments that contain
+ *   theming information, such as template file name suggestions.
+ * - Note that this debugging markup will cause automated tests that directly
+ *   check rendered HTML to fail.
+ *
+ * For more information about debugging theme templates, see
+ * https://www.drupal.org/node/223440#theme-debug.
+ *
+ * Not recommended in production environments.
+ *
+ * Remove the leading hash sign to enable.
+ */
+# $conf['theme_debug'] = TRUE;
+>>>>>>> Upgrading to Drupal core 7.50
