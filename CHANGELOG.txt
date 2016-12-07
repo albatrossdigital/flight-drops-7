@@ -1,5 +1,5 @@
 
-Drupal 7.53, xxxx-xx-xx (development version)
+Drupal 7.53, 2016-12-07
 -----------------------
 
 - Modules are now able to define theme engines.
