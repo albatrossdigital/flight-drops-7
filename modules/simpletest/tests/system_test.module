@@ -460,6 +460,20 @@ function system_test_authorize_init_page($page_title) {
 }
 
 /**
+ * Sets two messages and removes the first one before the messages are displayed.
+ */
+function system_test_drupal_set_message() {
+  // Set two messages.
+  drupal_set_message('First message (removed).');
+  drupal_set_message('Second message (not removed).');
+
+  // Remove the first.
+  unset($_SESSION['messages']['status'][0]);
+
+  return '';
+}
+
+/**
  * Page callback to print out $_GET['destination'] for testing.
  */
 function system_test_get_destination() {
