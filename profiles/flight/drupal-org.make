@@ -309,7 +309,7 @@ projects[ckeditor][subdir] = "contrib"
 projects[file_entity][version] = "2.0-beta2"
 projects[file_entity][subdir] = "contrib"
 
-projects[media][version] = "2.0-beta1"
+projects[media][version] = "2.0"
 projects[media][subdir] = "contrib"
 
 ; +++++ Modules Dev/specific revisions +++++
@@ -516,11 +516,6 @@ libraries[ckeditor][directory_name] = ckeditor
 ; Fix CKEditor call to jQuery.browser
 projects[ckeditor][patch][2199995] = "http://drupal.org/files/issues/ckeditor-219995-jQuery_browser_test_deprecated-2.patch"
 
-; Fix adding media to summaries
-; Found as a link on https://drupal.org/comment/8312617#comment-8312617
-; Last checked Aug 25, 2014
-projects[media][patch][1995030] = "http://drupal.org/files/issues/media-7.x-2.x-wysiwyg-summary-support-1995030-6.patch"
-
 ; Allow us to specify file types on media admin page
 ; Updated Aug 25, 2014
 projects[ckeditor][patch][1649464] = "http://drupal.org/files/issues/ckeditor-hook_into_media_admin-1649464-9.patch"
@@ -557,6 +552,11 @@ projects[ckeditor][patch][2454933] = "https://www.drupal.org/files/issues/Issue_
 projects[views][patch][339384] = "https://www.drupal.org/files/issues/views-fix-exposed-filter-description-339384-36-7.x-3.x.patch"
 
 ; +++++ Patches No longer used +++++
+
+; Fix adding media to summaries
+; Found as a link on https://drupal.org/comment/8312617#comment-8312617
+; Last checked Aug 25, 2014
+;projects[media][patch][1995030] = "http://drupal.org/files/issues/media-7.x-2.x-wysiwyg-summary-support-1995030-6.patch"
 
 ; Fix Issue with media and CKEditor ACF
 ; Updated Aug 25, 2014
