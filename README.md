@@ -1,4 +1,20 @@
-# How to Update Flight based repos
+# flight-drops-7
+
+## How to update the latest from the Pantheon upstream
+
+Setup
+```
+git remote add upstream https://github.com/pantheon-systems/drops-7.git
+```
+
+Merging in changes
+```
+git merge upstream/master
+```
+
+
+
+## How to Update Flight based repos
 
 ### First update 
 
